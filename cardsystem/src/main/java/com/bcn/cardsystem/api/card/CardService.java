@@ -31,6 +31,11 @@ public class CardService {
         //validate to see that the card is not empty 
         entity.validate();
         //todo: validate the card has four parts and bring out the  digits
-        String[] wordSplit = entity.getNumber().split("[-\\s]");
+       
+    }
+    
+    public String[] getCardSetsOfDigits(String card_number){
+         String[] wordSplit = card_number.split("[-\\s]");         
+         return wordSplit;
     }
 }
