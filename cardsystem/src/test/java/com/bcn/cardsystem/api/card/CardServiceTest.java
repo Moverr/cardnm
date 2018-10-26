@@ -79,4 +79,13 @@ public class CardServiceTest {
 
     }
 
+    @Test
+    public void getFirstCharacters() {
+        System.out.println("test_card_split_with_correct_card_format");
+        String card_number = "10017";
+        CardService instance = new CardService();
+        String response = instance.getFirstCharacters(card_number, 4);
+        assertEquals(response, "1001");
+    }
+
 }

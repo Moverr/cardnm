@@ -26,22 +26,36 @@ public class CardService {
         return instance;
     }
 
-    
-    public void validate_checksum(Card entity){
+    public void validate_checksum(Card entity) {
         //validate to see that the card is not empty 
         entity.validate();
         //todo: validate the card has four parts and bring out the  digits
-        String[] cardFourDigits = getCardSetsOfDigits(entity.getNumber());
-        if(cardFourDigits.length != 4){
+        String[] cardNumberSets = getCardSetsOfDigits(entity.getNumber());
+        if (cardNumberSets.length != 4) {
             throw new BadRequestException("Card number is in a wrong format");
         }
         //todo: proceede  :: 
+       for(String set : cardNumberSets){
+           
+           String firstFourCharacters = getFirstCharacters(set,4);
+            convertFromBaseToBase(firstFourCharacters, 0, 0);
+       }
         
-       
+
     }
-    
-    public String[] getCardSetsOfDigits(String card_number){
-         String[] wordSplit = card_number.split("[-\\s]");         
-         return wordSplit;
+
+    public String getFirstCharacters(String set,Integer num_of_characters) {
+        String firstFourCharacters = set.substring(0, Math.min(set.length(), num_of_characters));
+        return firstFourCharacters;
     }
+
+    public String[] getCardSetsOfDigits(String card_number) {
+        String[] wordSplit = card_number.split("[-\\s]");
+        return wordSplit;
+    }
+
+    public String convertFromBaseToBase(String str, int fromBase, int toBase) {
+        return Integer.toString(Integer.parseInt(str, fromBase), toBase);
+    }
+
 }
