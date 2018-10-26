@@ -84,8 +84,23 @@ public class CardServiceTest {
         System.out.println("test_card_split_with_correct_card_format");
         String card_number = "10017";
         CardService instance = new CardService();
-        String response = instance.getFirstCharacters(card_number, 4);
+        String response = instance.getCharacters(card_number, 4);
         assertEquals(response, "1001");
+    }
+
+    @Test
+    public void validateCardNumber() {
+        try {
+            System.out.println("test_card_split_with_correct_card_format");
+            String card_number = "10017490920424437262";
+            Card entity = new Card();
+            entity.setNumber(card_number);
+            CardService instance = new CardService();
+            String[] response = instance.validateCardNumber(entity);
+        } catch (BadRequestException bre) {
+            assertEquals(bre.getResponse().getStatus(), 400);
+        }
+
     }
 
 }

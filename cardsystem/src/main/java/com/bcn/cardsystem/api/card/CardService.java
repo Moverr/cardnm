@@ -29,22 +29,27 @@ public class CardService {
     public void validate_checksum(Card entity) {
         //validate to see that the card is not empty 
         entity.validate();
-        //todo: validate the card has four parts and bring out the  digits
-        String[] cardNumberSets = getCardSetsOfDigits(entity.getNumber());
-        if (cardNumberSets.length != 4) {
-            throw new BadRequestException("Card number is in a wrong format");
-        }
+        String[] cardNumberSets = validateCardNumber(entity);
         //todo: proceede  :: 
-       for(String set : cardNumberSets){
-           
-           String firstFourCharacters = getFirstCharacters(set,4);
-            convertFromBaseToBase(firstFourCharacters, 0, 0);
+       for(String set : cardNumberSets){           
+           String firstFourCharacters = getCharacters(set,4);
+           convertFromBaseToBase(firstFourCharacters, 0, 0);
        }
         
 
     }
 
-    public String getFirstCharacters(String set,Integer num_of_characters) {
+ 
+    public String[] validateCardNumber(Card entity) throws BadRequestException {
+        //todo: validate the card has four parts and bring out the  digits
+        String[] cardNumberSets = getCardSetsOfDigits(entity.getNumber());
+        if (cardNumberSets.length != 4) {
+            throw new BadRequestException("Card number is in a wrong format");
+        }
+        return cardNumberSets;
+    }
+
+    public String getCharacters(String set,Integer num_of_characters) {
         String firstFourCharacters = set.substring(0, Math.min(set.length(), num_of_characters));
         return firstFourCharacters;
     }
