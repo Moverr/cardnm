@@ -6,6 +6,7 @@
 package com.bcn.cardsystem.api.card;
 
 import com.bcn.cardsystem.api.card.entities.Card;
+import com.bcn.cardsystem.helper.exceptions.BadRequestException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -55,13 +56,16 @@ public class CardServiceTest {
      * Test of validate_checksum method, of class CardService.
      */
     @Test
-    public void testValidate_checksum() {
+    public void test_validate_checksum_check_for_mandatory_fields() {
+        try{
         System.out.println("validate_checksum");
-        Card entity = null;
+        Card entity = new Card();
         CardService instance = new CardService();
         instance.validate_checksum(entity);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        }catch(BadRequestException badRequestException){
+            assertEquals(badRequestException.getResponse().getStatus(), 400);
+        }
+        
     }
     
 }
