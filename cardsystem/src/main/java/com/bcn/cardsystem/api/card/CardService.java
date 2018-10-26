@@ -31,15 +31,31 @@ public class CardService {
         entity.validate();
         String[] cardNumberSets = validateCardNumber(entity);
         //todo: proceede  :: 
-       for(String set : cardNumberSets){           
-           String firstFourCharacters = getCharacters(set,4);
-           convertFromBaseToBase(firstFourCharacters, 0, 0);
-       }
-        
+        for (String set : cardNumberSets) {
+            String firstFourCharacters = getCharacters(set, 4);
+            convertFromBaseToBase(firstFourCharacters, 0, 0);
+            String[] firstFourCharactersArray = firstFourCharacters.split("");
+            Integer lastCorrectDigit = getLastCorrectDigit(firstFourCharactersArray);
+            
+           
+            lastCorrectDigit = lastCorrectDigit +1;
+            
+        }
 
     }
 
- 
+    public Integer getLastCorrectDigit(String[] firstFourCharactersArray) throws NumberFormatException {
+        Integer result = 0;
+        for(String item : firstFourCharactersArray ){
+            result += Integer.parseInt(item);
+        }
+        if(result >= 10 ){
+            String[] str = result.toString().split("");
+            getLastCorrectDigit(firstFourCharactersArray);
+        }
+        return result;
+    }
+
     public String[] validateCardNumber(Card entity) throws BadRequestException {
         //todo: validate the card has four parts and bring out the  digits
         String[] cardNumberSets = getCardSetsOfDigits(entity.getNumber());
@@ -49,7 +65,7 @@ public class CardService {
         return cardNumberSets;
     }
 
-    public String getCharacters(String set,Integer num_of_characters) {
+    public String getCharacters(String set, Integer num_of_characters) {
         String firstFourCharacters = set.substring(0, Math.min(set.length(), num_of_characters));
         return firstFourCharacters;
     }
