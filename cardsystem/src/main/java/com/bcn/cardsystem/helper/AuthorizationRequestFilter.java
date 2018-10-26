@@ -1,7 +1,7 @@
 package com.bcn.cardsystem.helper;
 
+import static com.bcn.cardsystem.helper.Utilities.getStackTrace;
 import com.bcn.cardsystem.helper.exceptions.UnauthorizedException;
-import static com.codemovers.scholar.engine.helper.Utilities.getStackTrace;
 import java.lang.annotation.Annotation;
 import java.util.logging.Level;
 import java.util.logging.Logger;

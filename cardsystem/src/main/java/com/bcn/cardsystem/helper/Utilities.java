@@ -1,5 +1,7 @@
 package com.bcn.cardsystem.helper;
 
+import com.bcn.cardsystem.annotation.ConditionallyMandatory;
+import com.bcn.cardsystem.annotation.Mandatory;
 import com.bcn.cardsystem.helper.exceptions.BadRequestException;
 import com.bcn.cardsystem.helper.exceptions.InternalErrorException;
  

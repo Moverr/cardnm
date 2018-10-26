@@ -1,6 +1,6 @@
 package com.bcn.cardsystem.helper.exceptions;
 
-import com.codemovers.scholar.engine.helper.Utilities;
+import com.bcn.cardsystem.helper.Utilities;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;

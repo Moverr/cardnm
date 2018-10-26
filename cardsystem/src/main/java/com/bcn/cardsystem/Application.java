@@ -5,9 +5,9 @@
  */
 package com.bcn.cardsystem;
 
-import com.codemovers.scholar.engine.helper.CORSResponseFilter;
-import com.codemovers.scholar.engine.helper.logfilters.LogInputRequestFilter;
-import com.codemovers.scholar.engine.helper.logfilters.LogOutputResponseFilter;
+import com.bcn.cardsystem.helper.CORSResponseFilter;
+import com.bcn.cardsystem.helper.logfilters.LogInputRequestFilter;
+import com.bcn.cardsystem.helper.logfilters.LogOutputResponseFilter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.jetty.server.Connector;
@@ -66,88 +66,11 @@ public class Application {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         context.setMaxFormContentSize(50000000);
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.accounts.AccountsEndpoint.class, CORSResponseFilter.class
-                ), "/account/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.users.UsersEndpoint.class, CORSResponseFilter.class
-                ), "/user/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.roles.RolesEndpoint.class, CORSResponseFilter.class
-                ), "/roles/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.classes.ClassEndpoint.class, CORSResponseFilter.class
-                ), "/classes/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.streams.StreamsEndpoint.class, CORSResponseFilter.class
-                ), "/streams/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.curriculum.CurriculumEndpoint.class, CORSResponseFilter.class
-                ), "/curriculum/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.subjects.SubjectEndpoint.class, CORSResponseFilter.class
-                ), "/subjects/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.subjects.papers.SubjectPapersEndpoint.class, CORSResponseFilter.class
-                ), "/subjects/papers/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.grading.GradingEndpoint.class, CORSResponseFilter.class
-                ), "/grading/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.grading.details.GradingDetailsEndpoint.class, CORSResponseFilter.class
-                ), "/grading/details/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.studyear.StudyYearEndpoint.class, CORSResponseFilter.class
-                ), "/studyyear/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.terms.TermEndpoint.class, CORSResponseFilter.class
-                ), "/terms/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.departments.DepartmentsEdnpoint.class, CORSResponseFilter.class
-                ), "/departments/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.staff.StaffEdnpoint.class, CORSResponseFilter.class
-                ), "/staff/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.permissions.PermissionsEndpoint.class, CORSResponseFilter.class
-                ), "/permissions/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.exams.ExamsEndpoint.class, CORSResponseFilter.class
-                ), "/exams/v1/*");
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.exams.classes.ExamsClassEndpoint.class, CORSResponseFilter.class
-                ), "/exams/classes/v1/*");
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.exams.terms.ExamsTermEndpoint.class, CORSResponseFilter.class
-                ), "/exams/terms/v1/*");
-         context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.timetable.exams.ExamTimetableEndpoint.class, CORSResponseFilter.class
-                ), "/exams/timetable/v1/*");
-        
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.students.admissions.AdmissionEndpoint.class, CORSResponseFilter.class
-                ), "/admissions/v1/*");
-
-        context.addServlet(
-                getServlet(com.codemovers.scholar.engine.api.v1.students.registration.terms.TermRegistrationEndpoint.class, CORSResponseFilter.class
-                ), "/registration/term/v1/*");
+        // this end points dont mind the use of sessions  :: 
+//        context.addServlet(
+//                getServlet(com.codemovers.scholar.engine.api.v1.accounts.AccountsEndpoint.class, CORSResponseFilter.class
+//                ), "/account/v1/*");
+ 
 
         int port = 9876;
         jettyServer = new Server(port);
