@@ -21,7 +21,9 @@ import javax.ws.rs.core.MediaType;
  */
 public class CardEndpoint {
 
-    //todo: post card details through api :: 
+    /*
+    END POINT THAT RECEIVES CARD AS AN ENTITY THEN VALIDATES ITS CHECKSUM
+    */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
