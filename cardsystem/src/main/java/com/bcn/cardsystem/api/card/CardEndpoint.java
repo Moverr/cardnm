@@ -21,6 +21,12 @@ import javax.ws.rs.core.MediaType;
  */
 public class CardEndpoint {
 
+    private CardService service = null;
+    public CardEndpoint() {
+        service = CardService.getInstance();
+    }
+
+    
     /*
     END POINT THAT RECEIVES CARD AS AN ENTITY THEN VALIDATES ITS CHECKSUM
     */

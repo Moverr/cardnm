@@ -5,6 +5,8 @@
  */
 package com.bcn.cardsystem.api.card;
 
+import com.bcn.cardsystem.api.card.entities.Card;
+
 /**
  *
  * @author mover
@@ -24,4 +26,10 @@ public class CardService {
         return instance;
     }
 
+    
+    public void validate_checksum(Card entity){
+        //validate to see that the card is not empty 
+        entity.validate();
+        
+    }
 }
