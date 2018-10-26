@@ -6,6 +6,7 @@
 package com.bcn.cardsystem.api.card;
 
 import com.bcn.cardsystem.api.card.entities.Card;
+import com.bcn.cardsystem.helper.exceptions.BadRequestException;
 
 /**
  *
@@ -22,7 +23,6 @@ public class CardService {
         if (instance == null) {
             instance = new CardService();
         }
-
         return instance;
     }
 
@@ -31,6 +31,12 @@ public class CardService {
         //validate to see that the card is not empty 
         entity.validate();
         //todo: validate the card has four parts and bring out the  digits
+        String[] cardFourDigits = getCardSetsOfDigits(entity.getNumber());
+        if(cardFourDigits.length != 4){
+            throw new BadRequestException("Card number is in a wrong format");
+        }
+        //todo: proceede  :: 
+        
        
     }
     
