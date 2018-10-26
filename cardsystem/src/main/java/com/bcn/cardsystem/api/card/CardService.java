@@ -34,20 +34,26 @@ public class CardService {
         for (String set : cardNumberSets) {
             String firstFourCharacters = getCharacters(set, 4);
             convertFromBaseToBase(firstFourCharacters, 0, 0);
-            String[] firstFourCharactersArray = firstFourCharacters.split("");
-            Integer lastCorrectDigit = getLastCorrectDigit(firstFourCharactersArray);
-            lastCorrectDigit = lastCorrectDigit +1;
-            
+            Integer correctNumber = getCorrectNumber(firstFourCharacters);
+
         }
 
     }
 
+    public Integer getCorrectNumber(String firstFourCharacters) throws NumberFormatException {
+        String[] firstFourCharactersArray = firstFourCharacters.split("");
+        Integer lastCorrectDigit = getLastCorrectDigit(firstFourCharactersArray);
+        firstFourCharactersArray[firstFourCharactersArray.length] = lastCorrectDigit.toString();
+        Integer correctnumber = Integer.parseInt(String.join("", firstFourCharacters));
+        return correctnumber;
+    }
+
     public Integer getLastCorrectDigit(String[] firstFourCharactersArray) throws NumberFormatException {
         Integer result = 0;
-        for(String item : firstFourCharactersArray ){
+        for (String item : firstFourCharactersArray) {
             result += Integer.parseInt(item);
         }
-        if(result >= 10 ){
+        if (result >= 10) {
             String[] str = result.toString().split("");
             getLastCorrectDigit(firstFourCharactersArray);
         }

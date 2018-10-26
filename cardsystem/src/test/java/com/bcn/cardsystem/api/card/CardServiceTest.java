@@ -103,4 +103,15 @@ public class CardServiceTest {
 
     }
 
+    @Test
+    public void getCorrectNumber() {
+        System.out.println("test_card_split_with_correct_card_format");
+        String card_number = "10017490920424437262";
+        Card entity = new Card();
+        entity.setNumber(card_number);
+        CardService instance = new CardService();
+        instance.getCorrectNumber(card_number);
+
+    }
+
 }
