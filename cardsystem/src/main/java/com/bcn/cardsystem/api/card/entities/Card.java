@@ -6,14 +6,16 @@
 package com.bcn.cardsystem.api.card.entities;
 
 import com.bcn.cardsystem.annotation.Mandatory;
+import com.bcn.cardsystem.api.card.abstracts.AbstractEntity;
+import static com.bcn.cardsystem.helper.Utilities.validateMandatoryFields;
 import java.util.Objects;
-import org.dom4j.tree.AbstractEntity;
 
 /**
  *
  * @author mover
  */
-public class Card  extends AbstractEntity {
+public class Card extends AbstractEntity {
+
     private Integer id;
     private @Mandatory
     String number;
@@ -67,16 +69,16 @@ public class Card  extends AbstractEntity {
     }
 
     @Override
+    public void validate() {
+        validateMandatoryFields(this.getClass(), this);
+    }
+
+    @Override
     public String toString() {
         return "Card{"
-                + "id=" + id 
-                + ", number=" + number 
+                + "id=" + id
+                + ", number=" + number
                 + '}';
     }
-    
-    
-    
-    
-    
-    
+
 }
