@@ -30,6 +30,7 @@ public class CardService {
     public void validate_checksum(Card entity){
         //validate to see that the card is not empty 
         entity.validate();
-        
+        //todo: validate the card has four parts and bring out the  digits
+        String[] wordSplit = entity.getNumber().split("[-\\s]");
     }
 }
