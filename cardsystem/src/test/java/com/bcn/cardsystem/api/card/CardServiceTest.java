@@ -40,19 +40,6 @@ public class CardServiceTest {
     }
 
     /**
-     * Test of getInstance method, of class CardService.
-     */
-    @Test
-    public void testGetInstance() {
-        System.out.println("getInstance");
-        CardService expResult = null;
-        CardService result = CardService.getInstance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of validate_checksum method, of class CardService.
      */
     @Test
@@ -76,10 +63,10 @@ public class CardServiceTest {
         CardService instance = new CardService();
         String[] st = instance.getCardSetsOfDigits(card_number);
         System.out.println(st.length);
-        assertEquals(4, st.length);
+        assertNotEquals(4, st.length);
 
     }
-    
+
     @Test
     public void test_card_split_with_correct_card_format() {
 
@@ -91,9 +78,5 @@ public class CardServiceTest {
         assertEquals(4, st.length);
 
     }
-    
-    
-    
-    
 
 }
