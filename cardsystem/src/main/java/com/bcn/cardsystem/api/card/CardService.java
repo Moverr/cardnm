@@ -36,8 +36,6 @@ public class CardService {
             convertFromBaseToBase(firstFourCharacters, 0, 0);
             String[] firstFourCharactersArray = firstFourCharacters.split("");
             Integer lastCorrectDigit = getLastCorrectDigit(firstFourCharactersArray);
-            
-           
             lastCorrectDigit = lastCorrectDigit +1;
             
         }
